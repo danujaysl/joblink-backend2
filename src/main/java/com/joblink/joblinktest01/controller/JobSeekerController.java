@@ -74,26 +74,27 @@ public class JobSeekerController {
         // return jobSeekerService.saveJobSeeker();
     }
     
-    @PutMapping("/updateJS")
-    public ResponseEntity updateJobSeeker (@RequestBody JobSeekerDTO jsDTO){
-         try{
+    @PutMapping(value = "/updateJS")
+    public ResponseEntity updateJobSeeker(@RequestBody JobSeekerDTO jsDTO){
+
+        try{
             String res = jobSeekerService.updateJobSeeker(jsDTO);
             if(res.equals("00")){
                 resDTO.setCode(VarList.RSP_SUCCESS);
-                resDTO.setMessage("Successfully Updated Job Seeker !");
+                resDTO.setMessage("Successfully updated Job Seeker !");
                 resDTO.setContent(jsDTO);
 
-                return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
+                return new ResponseEntity(resDTO, HttpStatus.CREATED);
             }
             else if(res.equals("01")){
-                resDTO.setCode(VarList.RSP_DUBLICATED);
-                resDTO.setMessage("Not Existed Job Seeker !");
-                resDTO.setContent(null);
+                resDTO.setCode(VarList.RSP_NO_DATA_FOUND);
+                resDTO.setMessage("Job Seeker not found !");
+                resDTO.setContent(jsDTO);
                 
                 return new ResponseEntity(resDTO, HttpStatus.BAD_REQUEST);
             } else {
                 resDTO.setCode(VarList.RSP_FAIL);
-                resDTO.setMessage("Save error!");
+                resDTO.setMessage("Saving error!");
                 resDTO.setContent(null);
                 
                 return new ResponseEntity(resDTO, HttpStatus.BAD_REQUEST);
@@ -105,7 +106,8 @@ public class JobSeekerController {
             resDTO.setContent(null);
                 
             return new ResponseEntity(resDTO, HttpStatus.INTERNAL_SERVER_ERROR);
-        } 
+        }   
+        // return jobSeekerService.saveJobSeeker();
     }
 
     @DeleteMapping("/deleteJS/{n_jobseekerid}")
@@ -119,15 +121,9 @@ public class JobSeekerController {
 
                 return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
 
-            } else if(res.equals("06")){
+            } else{
                 resDTO.setCode(VarList.RSP_NO_DATA_FOUND);
-                resDTO.setMessage("Job Seeker is not Existed !");
-                resDTO.setContent(null);;
-                return new ResponseEntity(resDTO, HttpStatus.BAD_REQUEST);
-
-            }else{
-                resDTO.setCode(VarList.RSP_NO_DATA_FOUND);
-                resDTO.setMessage("Delete error !");
+                resDTO.setMessage("Job seeker not found to delete !");
                 resDTO.setContent(null);;
                 return new ResponseEntity(resDTO, HttpStatus.BAD_REQUEST);
             }
@@ -140,15 +136,11 @@ public class JobSeekerController {
         }
     }
 
-    // @PatchMapping("/patchUser")
-    // public String patchUser(){
-    //     return "Patch is OK";
-    // }
 
     @GetMapping("/getjsbyID/{n_jobseekerid}")
-    public ResponseEntity getid(@PathVariable Integer n_jobseekerid){
+    public ResponseEntity getid(@PathVariable int n_jobseekerid){
         try{
-            JobSeekerDTO jsDTO = jobSeekerService.getid(n_jobseekerid);
+            JobSeekerDTO jsDTO = jobSeekerService.getbyid(n_jobseekerid);
             if (jsDTO !=null){
                 resDTO.setCode(VarList.RSP_SUCCESS);
                 resDTO.setMessage("Job Seeker Found !");
@@ -171,9 +163,6 @@ public class JobSeekerController {
                 
             return new ResponseEntity(resDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        
-        
-        // return jobSeekerService.getid(n_jobseekerid);
     }
 
 }
