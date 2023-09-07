@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
-@RequestMapping(value = "api/users")
+@RequestMapping(value = "/api/users")
 public class JobSeekerController {
     @Autowired
     private JobSeekerService jobSeekerService;
@@ -40,6 +39,16 @@ public class JobSeekerController {
 
     @PostMapping("/saveJS")
     public ResponseEntity saveJobSeeker(@RequestBody JobSeekerDTO jsDTO){
+
+
+
+       Boolean jobseekerObj = jobSeekerService.seekJobSeeker(jsDTO);
+       if(jobseekerObj){
+         resDTO.setCode(VarList.RSP_DUBLICATED);
+                resDTO.setMessage("Job Seeker already in system !");
+                resDTO.setContent(jsDTO);
+                return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
+       }
 
         try{
             String res = jobSeekerService.saveJobSeeker(jsDTO);
@@ -163,6 +172,19 @@ public class JobSeekerController {
                 
             return new ResponseEntity(resDTO, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+
+     @PostMapping("/login")
+    public ResponseEntity login(@RequestBody JobSeekerDTO jsDTO){
+
+
+         resDTO.setCode(VarList.RSP_DUBLICATED);
+                resDTO.setMessage( String.valueOf(
+                    (Long) jobSeekerService.login(jsDTO)));
+                resDTO.setContent(jsDTO);
+                return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
+       
     }
 
 }

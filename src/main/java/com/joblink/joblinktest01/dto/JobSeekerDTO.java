@@ -15,4 +15,5 @@ public class JobSeekerDTO {
     private String c_password;
     private int n_age;
     private String c_telephone;
+    private String type;
 }

@@ -32,6 +32,21 @@ public class JobSeekerService {
         }
     }
 
+
+        public Boolean seekJobSeeker(JobSeekerDTO jobSeekerDTO){
+           List<jobseeker> find =  jobSeekerRepo.findByc_telephone(jobSeekerDTO.getC_telephone());
+           return find!=null && find.size()>0;
+    }
+
+
+
+    
+        public Object login(JobSeekerDTO jobSeekerDTO){
+           return jobSeekerRepo.loginSp(jobSeekerDTO.getType(), jobSeekerDTO.getC_logname(), jobSeekerDTO.getC_password());
+    }
+
+
+
     public List<JobSeekerDTO> getAllJobSeeker(){
         List<jobseeker> jobSeekerList = jobSeekerRepo.findAll();
         return modelMapper.map(jobSeekerList,new TypeToken<ArrayList<JobSeekerDTO>>(){

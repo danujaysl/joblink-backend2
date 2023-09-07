@@ -1,7 +1,10 @@
 package com.joblink.joblinktest01.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,8 +13,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "consultant")
 public class consultant {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int n_consultantid;
     private String c_name;
     private String c_logname;

@@ -16,4 +16,5 @@ public class consultantDTO {
     private int n_country;
     private int n_jobid;
     private boolean b_active;
+    private String type;
 }
