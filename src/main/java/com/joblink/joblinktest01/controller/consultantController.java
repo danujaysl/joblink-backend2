@@ -4,7 +4,6 @@ import com.joblink.joblinktest01.dto.ResponseDTO;
 import com.joblink.joblinktest01.dto.consultantDTO;
 import com.joblink.joblinktest01.service.consultantService;
 import com.joblink.joblinktest01.util.VarList;
-import com.joblink.joblinktest01.entity.consultant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
