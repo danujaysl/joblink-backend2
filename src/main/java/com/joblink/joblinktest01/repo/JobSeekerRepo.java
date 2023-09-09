@@ -21,7 +21,8 @@ public interface JobSeekerRepo extends JpaRepository<jobseeker,Integer> {
     @Query(value = "select * from jobseeker where c_telephone= ?1",nativeQuery = true)
     List<jobseeker> findByc_telephone(String n_jobseekerid);
 
-
+    @Query(value = "select * from jobseeker where c_logname= ?1",nativeQuery = true)
+    List<jobseeker> findByc_logname(String n_jobseekerid);
     
 
 

@@ -2,7 +2,9 @@ package com.joblink.joblinktest01.controller;
 
 
 import com.joblink.joblinktest01.dto.ResponseDTO;
+import com.joblink.joblinktest01.dto.adminDTO;
 import com.joblink.joblinktest01.dto.consultantDTO;
+import com.joblink.joblinktest01.service.adminService;
 import com.joblink.joblinktest01.service.consultantService;
 import com.joblink.joblinktest01.util.VarList;
 
@@ -20,16 +22,16 @@ public class adminController {
     private ResponseDTO resDTO;
 
     @Autowired
-    private consultantService conService;
+    private adminService adService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody consultantDTO conDTO){
+    public ResponseEntity login(@RequestBody adminDTO aDto){
 
 
          resDTO.setCode(VarList.RSP_DUBLICATED);
                 resDTO.setMessage( String.valueOf(
-                    (Long) conService.loginCon(conDTO)));
-                resDTO.setContent(conDTO);
+                    (Long) adService.loginAdmin(aDto)));
+                resDTO.setContent(aDto);
                 return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
        
     }

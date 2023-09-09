@@ -17,7 +17,7 @@ public class adminService {
     //     List<consultant> find = consultantRepo.findByc_telephone(conDTO.getC_telephone());
     //     return find != null && find.size() > 0;
     // }
-    public Object loginCon(adminDTO aDTO){
+    public Object loginAdmin(adminDTO aDTO){
            return aRepo.loginSp(aDTO.getType(), aDTO.getC_name(), aDTO.getC_password());
     }
 }
