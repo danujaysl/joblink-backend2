@@ -13,6 +13,9 @@ public interface appointmentRepo extends JpaRepository <appointment,Integer> {
     // @Query(value = "select * from consultant where c_telephone= ?1",nativeQuery = true)
     // List<consultant> findByc_telephone(String n_consultantid);
 
-    @Query(value = "select * from onsultant",nativeQuery = true)
-    Object loginSp(String type,String uname,String password);
+    @Query(value = "SELECT  * FROM joblink.vappointments where n_jobseekerid = ?1 LIMIT 1",nativeQuery = true)
+    appointment getAppointmentbyID(int n_jobseekerid);
+
+
+    // Object loginSp(String type,String uname,String password);
 }

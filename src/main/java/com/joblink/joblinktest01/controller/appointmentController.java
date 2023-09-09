@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.joblink.joblinktest01.dto.JobSeekerDTO;
 import com.joblink.joblinktest01.dto.ResponseDTO;
 import com.joblink.joblinktest01.dto.adminDTO;
 import com.joblink.joblinktest01.dto.appointmentDTO;
@@ -33,5 +34,12 @@ public class appointmentController {
                 resDTO.setMessage( res);
                 return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
       }
+
+    @PostMapping("/myAppointment")
+    public ResponseEntity myAppointment(@RequestBody JobSeekerDTO jsDTO) {
+
+      return null;
+
+    }
 
 }
