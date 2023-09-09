@@ -182,10 +182,14 @@ public class JobSeekerController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody JobSeekerDTO jsDTO) {
 
+        String userLoginResult = String.valueOf(
+                (Long) jobSeekerService.login(jsDTO));
+
         resDTO.setCode(VarList.RSP_DUBLICATED);
-        resDTO.setMessage(String.valueOf(
-                (Long) jobSeekerService.login(jsDTO)));
-        resDTO.setContent(jsDTO);
+        resDTO.setMessage(userLoginResult);
+        if(userLoginResult.equals("100")){
+            resDTO.setContent(jobSeekerService.getJobSeeker(jsDTO.getC_logname()));
+        }
         return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
 
     }

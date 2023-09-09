@@ -45,6 +45,10 @@ public class JobSeekerService {
         return jobSeekerRepo.loginSp(jobSeekerDTO.getType(), jobSeekerDTO.getC_logname(), jobSeekerDTO.getC_password());
     }
 
+    public Object getJobSeeker(String c_logname){
+        return jobSeekerRepo.findByLoginName(c_logname);
+    }
+
     public List<JobSeekerDTO> getAllJobSeeker() {
         List<jobseeker> jobSeekerList = jobSeekerRepo.findAll();
         return modelMapper.map(jobSeekerList, new TypeToken<ArrayList<JobSeekerDTO>>() {

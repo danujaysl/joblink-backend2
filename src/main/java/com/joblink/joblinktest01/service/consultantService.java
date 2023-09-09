@@ -1,9 +1,13 @@
 package com.joblink.joblinktest01.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.joblink.joblinktest01.dto.AvailableConsultantsDTO;
 import com.joblink.joblinktest01.dto.consultantDTO;
+import com.joblink.joblinktest01.entity.consultant;
 import com.joblink.joblinktest01.repo.consultantRepo;
 import jakarta.transaction.Transactional;
 
@@ -20,5 +24,12 @@ public class consultantService {
     // }
     public Object loginCon(consultantDTO conDTO){
            return conREPO.loginSp(conDTO.getType(), conDTO.getC_logname(), conDTO.getC_password());
+    }
+
+    public  List<consultant> geAvailableConsultatnts(AvailableConsultantsDTO conDTO){
+
+        List<consultant> consultants = conREPO.findByn_countryAndn_jobidAndb_active(conDTO.getN_country(),conDTO.getN_jobid());
+        return consultants;
+
     }
 }
