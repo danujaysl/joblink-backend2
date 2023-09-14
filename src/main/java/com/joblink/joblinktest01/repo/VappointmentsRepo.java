@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.joblink.joblinktest01.entity.vappointments;
-import java.util.List;
 
 
 public interface VappointmentsRepo extends JpaRepository <vappointments,Integer> {

@@ -1,6 +1,5 @@
 package com.joblink.joblinktest01.service;
 
-import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

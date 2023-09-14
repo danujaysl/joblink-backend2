@@ -51,8 +51,8 @@ public class vappointmentsController {
         }
     }
 
-    @GetMapping("/getvappbyJSID/{n_jobseekerid}")
-    public VappointmentsDTO getMyAppoint(@PathVariable int n_jobseekerid){
-        return vappService.getAppointmentByJobSeekerID(n_jobseekerid);
-    }
+    // @GetMapping("/getvappbyJSID/{n_jobseekerid}")
+    // public VappointmentsDTO getMyAppoint(@PathVariable int n_jobseekerid){
+    //     return vappService.getAppointmentByJobSeekerID(n_jobseekerid);
+    // } -- Uda eka ketiyenma
 }
