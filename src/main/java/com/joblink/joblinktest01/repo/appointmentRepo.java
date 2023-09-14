@@ -1,21 +1,19 @@
 package com.joblink.joblinktest01.repo;
 
 
-import org.springframework.data.jpa.repository.JpaRepository;
 
+
+import org.springframework.data.jpa.repository.JpaRepository;
 import com.joblink.joblinktest01.entity.appointment;
-import org.springframework.data.jpa.repository.Query;
 
 public interface appointmentRepo extends JpaRepository <appointment,Integer> {
-    // @Query(value = "Select * from consultant where nConsultantID= ?1",nativeQuery = true)
-    // consultant getConsultantbyID(int n_consultantid);
 
-    // @Query(value = "select * from consultant where c_telephone= ?1",nativeQuery = true)
-    // List<consultant> findByc_telephone(String n_consultantid);
+    // //not needed for findbyid
+    // @Query(value = "SELECT  * FROM joblink.vappointments where n_jobseekerid = ?1  order by n_appointid desc limit 1;",nativeQuery = true)
+    // List<appointment> findByn_jobseekerid(String n_appointid);
 
-    @Query(value = "SELECT  * FROM joblink.vappointments where n_jobseekerid = ?1 LIMIT 1",nativeQuery = true)
-    appointment getAppointmentbyID(int n_jobseekerid);
+    // Optional<appointment> findByN_jobseekerid(int n_jobseekerid);
+    // @Query(value ="SELECT  * FROM joblink.vappointments where n_jobseekerid = ?1  order by n_appointid desc limit 1",nativeQuery = true)
+    // appointment getappointbyjobseekid (Integer n_jobseekerid);
 
-
-    // Object loginSp(String type,String uname,String password);
 }

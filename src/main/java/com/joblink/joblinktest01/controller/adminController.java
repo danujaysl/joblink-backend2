@@ -1,8 +1,8 @@
 package com.joblink.joblinktest01.controller;
 
 
+import com.joblink.joblinktest01.dto.AdminDTO;
 import com.joblink.joblinktest01.dto.ResponseDTO;
-import com.joblink.joblinktest01.dto.adminDTO;
 import com.joblink.joblinktest01.dto.consultantDTO;
 import com.joblink.joblinktest01.service.adminService;
 import com.joblink.joblinktest01.service.consultantService;
@@ -25,7 +25,7 @@ public class adminController {
     private adminService adService;
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody adminDTO aDto){
+    public ResponseEntity login(@RequestBody AdminDTO aDto){
 
 
          resDTO.setCode(VarList.RSP_DUBLICATED);

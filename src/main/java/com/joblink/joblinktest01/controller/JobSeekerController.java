@@ -150,6 +150,8 @@ public class JobSeekerController {
         }
     }
 
+
+    // GET BY JOB SEEKER ID 
     @GetMapping("/getjsbyID/{n_jobseekerid}")
     public ResponseEntity getid(@PathVariable int n_jobseekerid) {
         try {
@@ -158,12 +160,11 @@ public class JobSeekerController {
                 resDTO.setCode(VarList.RSP_SUCCESS);
                 resDTO.setMessage("Job Seeker Found !");
                 resDTO.setContent(jsDTO);
-                ;
-
+                
                 return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
 
             } else {
-                resDTO.setCode(VarList.RSP_DUBLICATED);
+                resDTO.setCode(VarList.RSP_NO_DATA_FOUND);
                 resDTO.setMessage("Job Seeker Not Exist !");
                 resDTO.setContent(null);
 

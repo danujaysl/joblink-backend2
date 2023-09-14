@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class appointmentDTO {
+public class AppointmentDTO {
     private int n_appointid;
     private int n_consultantid;
     private int n_jobseekerid;

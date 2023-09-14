@@ -36,6 +36,7 @@ public class JobSeekerService {
         List<jobseeker> find = jobSeekerRepo.findByc_telephone(jobSeekerDTO.getC_telephone());
         return find != null && find.size() > 0;
     }
+    
     public Boolean seekJobSeekerbyUn(JobSeekerDTO jobSeekerDTO){
            List<jobseeker> find2 =  jobSeekerRepo.findByc_logname(jobSeekerDTO.getC_logname());
            return find2!=null && find2.size()>0;
@@ -74,6 +75,7 @@ public class JobSeekerService {
         }
     }
 
+    //GET DATA BY ID SERVICE
     public JobSeekerDTO getbyid(int n_jobseekerid) {
         if (jobSeekerRepo.existsById(n_jobseekerid)) {
             jobseeker jobentity = jobSeekerRepo.findById(n_jobseekerid).orElse(null);
@@ -82,4 +84,5 @@ public class JobSeekerService {
             return null;
         }
     }
+
 }

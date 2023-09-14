@@ -8,12 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.joblink.joblinktest01.dto.JobSeekerDTO;
+import com.joblink.joblinktest01.dto.AppointmentDTO;
 import com.joblink.joblinktest01.dto.ResponseDTO;
-import com.joblink.joblinktest01.dto.adminDTO;
-import com.joblink.joblinktest01.dto.appointmentDTO;
 import com.joblink.joblinktest01.service.AppointmentService;
-import com.joblink.joblinktest01.service.adminService;
 import com.joblink.joblinktest01.util.VarList;
 
 @RestController
@@ -27,19 +24,40 @@ public class appointmentController {
     private AppointmentService appService;
 
     @PostMapping("/new")
-      public ResponseEntity newAppointment(@RequestBody appointmentDTO appDto){
+      public ResponseEntity newAppointment(@RequestBody AppointmentDTO appDto){
         String res = appService.newAppointment(appDto);
         
-         resDTO.setCode(VarList.RSP_DUBLICATED);
+         resDTO.setCode(VarList.RSP_SUCCESS);
                 resDTO.setMessage( res);
                 return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
       }
 
-    @PostMapping("/myAppointment")
-    public ResponseEntity myAppointment(@RequestBody JobSeekerDTO jsDTO) {
+    // @GetMapping("/getappbyID/{n_jobseekerid}")
+    // public ResponseEntity getid(@PathVariable int n_jobseekerid) {
+    //     try {
+    //         AppointmentDTO appDTO = appService.getbyid(n_jobseekerid);
+    //         if (appDTO != null) {
+    //             resDTO.setCode(VarList.RSP_SUCCESS);
+    //             resDTO.setMessage("Appointment Found !");
+    //             resDTO.setContent(appDTO);
 
-      return null;
+    //             return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
 
-    }
+    //         } else {
+    //             resDTO.setCode(VarList.RSP_NO_DATA_FOUND);
+    //             resDTO.setMessage("Appointment Not Exist !");
+    //             resDTO.setContent(null);
+
+    //             return new ResponseEntity(resDTO, HttpStatus.BAD_REQUEST);
+
+    //         }
+    //     } catch (Exception ex) {
+    //         resDTO.setCode(VarList.RSP_DUBLICATED);
+    //         resDTO.setMessage("Server Error !");
+    //         resDTO.setContent(null);
+
+    //         return new ResponseEntity(resDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+    //     }
+    // }
 
 }
