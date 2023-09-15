@@ -32,4 +32,8 @@ public class consultantService {
         return consultants;
 
     }
+
+    public consultant findByLoginName(String cname){
+        return conREPO.findByLoginName(cname);
+    }
 }

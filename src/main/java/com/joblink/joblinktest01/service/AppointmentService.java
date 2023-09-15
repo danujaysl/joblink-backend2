@@ -1,5 +1,7 @@
 package com.joblink.joblinktest01.service;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,25 @@ public class AppointmentService {
 
     aptRepo.save(modelMapper.map(appDTO, appointment.class));
     return VarList.RSP_SUCCESS;
+
+  }
+
+
+    public String changeStatus(AppointmentDTO appDTO) {
+
+    aptRepo.changeStatus(appDTO.getN_status(), appDTO.getN_appointid());
+    return VarList.RSP_SUCCESS;
+
+  }
+
+   public List<Object[]> list(AppointmentDTO appDTO) {
+
+    return aptRepo.getByConsultantAndStatus(appDTO.getN_status(), appDTO.getN_consultantid());
+
+  }
+   public List<Object[]> report(AppointmentDTO appDTO) {
+
+    return aptRepo.getReport(appDTO.getFromDate(), appDTO.getToDate());
 
   }
 

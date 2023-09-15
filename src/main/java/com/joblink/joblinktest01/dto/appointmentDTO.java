@@ -15,4 +15,6 @@ public class AppointmentDTO {
     private int n_countryid;
     private int n_status;
     private String d_datetime;
+    private String fromDate;
+    private String toDate;
 }

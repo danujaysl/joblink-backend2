@@ -32,6 +32,38 @@ public class appointmentController {
                 return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
       }
 
+      
+    @PostMapping("/change/status")
+      public ResponseEntity changeStatus(@RequestBody AppointmentDTO appDto){
+        String res = appService.changeStatus(appDto);
+        
+         resDTO.setCode(VarList.RSP_SUCCESS);
+                resDTO.setMessage( res);
+                return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
+      }
+
+
+            
+    @PostMapping("/list")
+      public ResponseEntity list(@RequestBody AppointmentDTO appDto){
+  
+        
+         resDTO.setCode(VarList.RSP_SUCCESS);
+                resDTO.setMessage("");
+                resDTO.setContent(appService.list(appDto));
+                return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
+      }
+
+          @PostMapping("/report")
+      public ResponseEntity report(@RequestBody AppointmentDTO appDto){
+  
+        
+         resDTO.setCode(VarList.RSP_SUCCESS);
+                resDTO.setMessage("");
+                resDTO.setContent(appService.report(appDto));
+                return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
+      }
+
     // @GetMapping("/getappbyID/{n_jobseekerid}")
     // public ResponseEntity getid(@PathVariable int n_jobseekerid) {
     //     try {

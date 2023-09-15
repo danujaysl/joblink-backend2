@@ -31,7 +31,7 @@ public class consultantController {
          resDTO.setCode(VarList.RSP_DUBLICATED);
                 resDTO.setMessage( String.valueOf(
                     (Long) conService.loginCon(conDTO)));
-                resDTO.setContent(conDTO);
+                resDTO.setContent(conService.findByLoginName(conDTO.getC_logname()));
                 return new ResponseEntity(resDTO, HttpStatus.ACCEPTED);
        
     }
