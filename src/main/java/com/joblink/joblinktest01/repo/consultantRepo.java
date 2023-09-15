@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.joblink.joblinktest01.entity.consultant;
-import com.joblink.joblinktest01.entity.jobseeker;
 
 public interface consultantRepo extends JpaRepository <consultant,Integer> {
     // @Query(value = "Select * from consultant where nConsultantID= ?1",nativeQuery = true)
